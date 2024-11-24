@@ -16,10 +16,11 @@ import static net.minecraft.block.Blocks.register;
 
 public class block1 {
     static public void rblock1 () {
-        Registry.register(Registries.BLOCK, new Identifier("tutorial","1block"), new Block(Block.Settings.create().strength(4.0f)));
-        final ChargeableBlock CHARGEABLE_BLOCK = (ChargeableBlock) register("railroad_pile_yell", new ChargeableBlock(Block.Settings.copy(Blocks.STONE)));
-//        Registry.register(Registries.BLOCK, new Identifier("tutorial","3block"), new Block(Block.Settings.create().strength(4.0f)));
-//        Registry.register(Registries.BLOCK, new Identifier("tutorial","4block"), new Block(Block.Settings.create().strength(4.0f)));
+        //Registry.register(Registries.BLOCK, new Identifier("cjbj","1block"), new Block(Block.Settings.create().strength(4.0f)));
+        //final ChargeableBlock CHARGEABLE_BLOCK = (ChargeableBlock) register("railroad_pile_yell", new ChargeableBlock(Block.Settings.copy(Blocks.STONE)));
+        //Registry.register(Registries.BLOCK, new Identifier("cjbj","example_block"), new Block(Block.Settings.create().strength(4.0f)));
+//        Registry.register(Registries.BLOCK, new Identifier("tutorial","milestone"), new Block(Block.Settings.create().strength(4.0f)));
+//        Registry.register(Registries.BLOCK, new Identifier("tutorial","pillar_outline_marker"), new Block(Block.Settings.create().strength(4.0f)));
 //        Registry.register(Registries.BLOCK, new Identifier("tutorial","5block"), new Block(Block.Settings.create().strength(4.0f)));
 //        Registry.register(Registries.BLOCK, new Identifier("tutorial","6block"), new Block(Block.Settings.create().strength(4.0f)));
 //        Registry.register(Registries.BLOCK, new Identifier("tutorial","7block"), new Block(Block.Settings.create().strength(4.0f)));

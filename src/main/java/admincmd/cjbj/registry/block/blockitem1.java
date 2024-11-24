@@ -1,6 +1,8 @@
 package admincmd.cjbj.registry.block;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -13,8 +15,9 @@ import static admincmd.cjbj.CJBJ.*;
 public class blockitem1 {
     static public void block1 () {
         // rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
-        //Registry.register(Registries.ITEM, new Identifier("tutorial","1block"), new BlockItem(StandardBlock, new FabricItemSettings()));
-//        Registry.register(Registries.ITEM, new Identifier("tutorial","2block"), new BlockItem(StandardBlock, new FabricItemSettings()));
+        Registry.register(Registries.BLOCK, Identifier.of("cjbj", "example_block"), Registries.BLOCK.get(new Identifier("cjbj", "example_block")));
+
+        //Registry.register(Registries.ITEM, new Identifier("tutorial","railroad_pile_yell"), new BlockItem(StandardBlock, new FabricItemSettings()));
 //        Registry.register(Registries.ITEM, new Identifier("tutorial","3block"), new BlockItem(StandardBlock, new FabricItemSettings()));
 //        Registry.register(Registries.ITEM, new Identifier("tutorial","4block"), new BlockItem(StandardBlock, new FabricItemSettings()));
 //        Registry.register(Registries.ITEM, new Identifier("tutorial","5block"), new BlockItem(StandardBlock, new FabricItemSettings()));
