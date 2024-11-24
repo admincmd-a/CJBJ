@@ -21,6 +21,11 @@ public class ModItemGroup {
                         .icon(() -> new ItemStack(Registries.ITEM.get(new Identifier("cjbj", "setting_rods")))).entries((displayContext, entries) -> {
                             entries.add(Registries.ITEM.get(new Identifier("cjbj", "setting_rods")));
                             entries.add(Registries.ITEM.get(new Identifier("cjbj", "example_block")));
+                            entries.add(Registries.ITEM.get(new Identifier("cjbj", "railway_crossing_signals_0")));
+                            entries.add(Registries.ITEM.get(new Identifier("cjbj", "railway_crossing_signals_1")));
+                            entries.add(Registries.ITEM.get(new Identifier("cjbj", "railway_crossing_signals_2")));
+                            entries.add(Registries.ITEM.get(new Identifier("cjbj", "railway_crossing_signals_3")));
+                            entries.add(Registries.ITEM.get(new Identifier("cjbj", "railway_crossing_signals_4")));
 
                         }).build());
 

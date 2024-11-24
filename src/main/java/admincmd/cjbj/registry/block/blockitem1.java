@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
+
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 //import net.minecraft.r
@@ -15,14 +16,22 @@ import static admincmd.cjbj.CJBJ.*;
 public class blockitem1 {
     static public void block1 () {
         // rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
-        Registry.register(Registries.BLOCK, Identifier.of("cjbj", "example_block"), Registries.BLOCK.get(new Identifier("cjbj", "example_block")));
+
+        Registry.register(Registries.ITEM, new Identifier("cjbj", "example_block"), new BlockItem(Registries.BLOCK.get(new Identifier("cjbj", "example_block")), new FabricItemSettings()));
+        Registry.register(Registries.ITEM, new Identifier("cjbj", "railway_crossing_signals_0"), new BlockItem(Registries.BLOCK.get(new Identifier("cjbj", "railway_crossing_signals_0")), new FabricItemSettings()));
+        Registry.register(Registries.ITEM, new Identifier("cjbj", "railway_crossing_signals_1"), new BlockItem(Registries.BLOCK.get(new Identifier("cjbj", "railway_crossing_signals_1")), new FabricItemSettings()));
+        Registry.register(Registries.ITEM, new Identifier("cjbj", "railway_crossing_signals_2"), new BlockItem(Registries.BLOCK.get(new Identifier("cjbj", "railway_crossing_signals_2")), new FabricItemSettings()));
+        Registry.register(Registries.ITEM, new Identifier("cjbj", "railway_crossing_signals_3"), new BlockItem(Registries.BLOCK.get(new Identifier("cjbj", "railway_crossing_signals_3")), new FabricItemSettings()));
+        Registry.register(Registries.ITEM, new Identifier("cjbj", "railway_crossing_signals_4"), new BlockItem(Registries.BLOCK.get(new Identifier("cjbj", "railway_crossing_signals_4")), new FabricItemSettings()));
+
+
 
         //Registry.register(Registries.ITEM, new Identifier("tutorial","railroad_pile_yell"), new BlockItem(StandardBlock, new FabricItemSettings()));
-//        Registry.register(Registries.ITEM, new Identifier("tutorial","3block"), new BlockItem(StandardBlock, new FabricItemSettings()));
-//        Registry.register(Registries.ITEM, new Identifier("tutorial","4block"), new BlockItem(StandardBlock, new FabricItemSettings()));
-//        Registry.register(Registries.ITEM, new Identifier("tutorial","5block"), new BlockItem(StandardBlock, new FabricItemSettings()));
-//        Registry.register(Registries.ITEM, new Identifier("tutorial","6block"), new BlockItem(StandardBlock, new FabricItemSettings()));
-//        Registry.register(Registries.ITEM, new Identifier("tutorial","7block"), new BlockItem(StandardBlock, new FabricItemSettings()));
+        //Registry.register(Registries.ITEM, new Identifier("tutorial","railway_crossing_signals_0"), Registries.BLOCK.get(new Identifier("cjbj", "example_block")));
+        //Registry.register(Registries.ITEM, new Identifier("tutorial","railway_crossing_signals_1"), Registries.BLOCK.get(new Identifier("cjbj", "example_block")));
+        //Registry.register(Registries.ITEM, new Identifier("tutorial","railway_crossing_signals_2"), Registries.BLOCK.get(new Identifier("cjbj", "example_block")));
+        //Registry.register(Registries.ITEM, new Identifier("tutorial","railway_crossing_signals_3"), Registries.BLOCK.get(new Identifier("cjbj", "example_block")));
+        //Registry.register(Registries.ITEM, new Identifier("tutorial","railway_crossing_signals_4"), Registries.BLOCK.get(new Identifier("cjbj", "example_block")));
 //        Registry.register(Registries.ITEM, new Identifier("tutorial","8block"), new BlockItem(StandardBlock, new FabricItemSettings()));
 //        Registry.register(Registries.ITEM, new Identifier("tutorial","9block"), new BlockItem(StandardBlock, new FabricItemSettings()));
 //        Registry.register(Registries.ITEM, new Identifier("tutorial","10block"), new BlockItem(StandardBlock, new FabricItemSettings()));
