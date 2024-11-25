@@ -17,7 +17,7 @@ public class ModItemGroup {
     static public void registerModItemGroups() {
         final ItemGroup SILVER_GROUP = Registry.register(Registries.ITEM_GROUP,
                 new Identifier(CJBJ.MOD_ID, "aaaaa"),
-                FabricItemGroup.builder().displayName(Text.translatable("itemgroup.main_menu"))
+                FabricItemGroup.builder().displayName(Text.translatable("itemGroup.cjbj.main_menu"))
                         .icon(() -> new ItemStack(Registries.ITEM.get(new Identifier("cjbj", "setting_rods")))).entries((displayContext, entries) -> {
                             entries.add(Registries.ITEM.get(new Identifier("cjbj", "setting_rods")));
                             entries.add(Registries.ITEM.get(new Identifier("cjbj", "example_block")));

@@ -7,6 +7,7 @@ import static net.minecraft.server.command.CommandManager.*;
 
 public class ModCommands {
     public static void registerModCommands() {
+
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> dispatcher.register(literal("c_about")
                 .executes(context -> {
                     // 对于 1.19 之前的版本，把“Text.literal”替换为“new LiteralText”。

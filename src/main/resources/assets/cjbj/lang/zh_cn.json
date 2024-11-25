@@ -1,10 +1,9 @@
 {
-  "item.cjbj.setting_rods": "设置刷",
-  "item.CJBJ.zer_ingot": "ZZZZZZZZZZZZZ",
-  "item.CJBJ.example_block": "example_block",
-  "block.CJBJ.milestone":"reeeeeeeeeeeeeeeeeee",
-  "itemGroup.cjbj.master_list":"城建不建 | 主列表",
   "item.CJBJ.zer_diamone": "ahh,",
+  "item.CJBJ.zer_ingot": "ZZZZZZZZZZZZZ",
+  "item.cjbj.setting_rods": "设置刷"
+  "itemGroup.cjbj.main_menu": "城建不建 | 主菜单",,
+  "item.CJBJ.zer_diamone": "ahh,",
+  "item.CJBJ.zer_ingot": "ZZZZZZZZZZZZZ",
 
-  "itemgroup.main_menu": "城建不建 | 主菜单",
 }

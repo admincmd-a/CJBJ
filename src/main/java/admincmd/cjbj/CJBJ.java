@@ -1,17 +1,16 @@
 package admincmd.cjbj;
 
-import admincmd.cjbj.registry.ModBlocks;
+import admincmd.cjbj.registry.*;
 //import admincmd.cjbj.registry.ModItems;
 
-import admincmd.cjbj.registry.ModCommands;
-import admincmd.cjbj.registry.ModItemGroup;
-import admincmd.cjbj.registry.ModItems;
 import com.mojang.datafixers.types.templates.List;
+import net.fabricmc.api.EnvType;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.Block;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.*;
@@ -79,7 +78,7 @@ public class CJBJ implements ModInitializer {
 				" | |      _  | | |  _ \\   _  | |\n" +
 				" | |___  | |_| | | |_) | | |_| |\n" +
 				"  \\____|  \\___/  |____/   \\___/ " +
-				"\n 城建不建 原型版"+
+				"\n 城建不建 原型版\n"+
 				"--------------------------------\n");
 
 		ModItems.registerModItems();// 初始化时注册物品
@@ -87,6 +86,15 @@ public class CJBJ implements ModInitializer {
 		ModBlocks.registerModBlockItems(); //注册方块物品
 		ModItemGroup.registerModItemGroups(); // 注册物品组
 		ModCommands.registerModCommands(); //注册命令
+
+		if (FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT) {
+			ClientActuator.reClientActuator(); // 仅在客户端上运行
+			ModColorBlocks.registerColorBlocks(); //注册可变颜色方块
+		} else {
+			ServerActuator.reServerActuator(); // 仅在服务端上运行
+		}
+
+		LOGGER.info("OK");
 
 
 
