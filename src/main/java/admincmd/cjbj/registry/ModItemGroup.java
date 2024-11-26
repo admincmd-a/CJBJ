@@ -26,6 +26,7 @@ public class ModItemGroup {
                             entries.add(Registries.ITEM.get(new Identifier("cjbj", "railway_crossing_signals_2")));
                             entries.add(Registries.ITEM.get(new Identifier("cjbj", "railway_crossing_signals_3")));
                             entries.add(Registries.ITEM.get(new Identifier("cjbj", "railway_crossing_signals_4")));
+                            entries.add(Registries.ITEM.get(new Identifier("cjbj", "highway_signage_racking_pole_crossbar_n")));
 
                         }).build());
 
