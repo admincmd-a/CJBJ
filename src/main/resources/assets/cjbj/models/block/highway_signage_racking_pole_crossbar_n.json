@@ -1,0 +1,22 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "cjbj:block/highway_signage_racking_pole_pole",
+		"particle": "cjbj:block/highway_signage_racking_pole_pole"
+	},
+	"elements": [
+		{
+			"from": [0, 6, 1],
+			"to": [16, 10, 5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [-3, 0, 17]},
+			"faces": {
+				"north": {"uv": [6, 2, 16, 6], "texture": "#0"},
+				"east": {"uv": [6, 2, 16, 6], "texture": "#0"},
+				"south": {"uv": [6, 2, 16, 6], "texture": "#0"},
+				"west": {"uv": [6, 2, 16, 6], "texture": "#0"},
+				"up": {"uv": [6, 2, 16, 6], "texture": "#0"},
+				"down": {"uv": [6, 2, 16, 6], "texture": "#0"}
+			}
+		}
+	]
+}

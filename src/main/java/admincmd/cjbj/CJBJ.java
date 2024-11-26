@@ -79,7 +79,7 @@ public class CJBJ implements ModInitializer {
 				" | |___  | |_| | | |_) | | |_| |\n" +
 				"  \\____|  \\___/  |____/   \\___/ " +
 				"\n 城建不建 原型版\n"+
-				"--------------------------------\n");
+				"--------------------------------\n");// 胜景，害的我笑了一下
 
 		ModItems.registerModItems();// 初始化时注册物品
 		ModBlocks.registerModBlocks();//注册方块
@@ -94,19 +94,8 @@ public class CJBJ implements ModInitializer {
 			ServerActuator.reServerActuator(); // 仅在服务端上运行
 		}
 
+
 		LOGGER.info("OK");
 
-
-
-
-
-
-
-
 	}
-
-	//public static void establishModBlocks() {
-
-	//}
-
 }

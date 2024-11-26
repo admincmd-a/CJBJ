@@ -38,7 +38,7 @@ public class ModBlocks {
 
 
         LOGGER.info("Mod 城建不建 正在注册方块,MOD_ID：" + CJBJ.MOD_ID);
-        block1.rblock1 ();
+        block1.registryblock1 ();
 
 //        @Override
 //        public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos, ShapeContext context) {

@@ -1,5 +1,13 @@
 {
-  "item.CJBJ.zer_diamone": "ahh,",
-  "item.CJBJ.zer_ingot": "ZZZZZZZZZZZZZ",
-  "item.cjbj.setting_rods": "ss"
+
+  "item.cjbj.railway_crossing_signals_0": "Railroad Crossing Signaler_Pole Part[0]",
+  "item.cjbj.railway_crossing_signals_1": "Railroad Crossing Signaler_Marking board part[1]",
+  "item.cjbj.railway_crossing_signals_2": "Railroad Crossing Signaler_Passing Signal Light Part[2]",
+  "item.cjbj.railway_crossing_signals_3": "Railroad Crossing Signaler_No Passing Signal Part[3]",
+  "item.cjbj.railway_crossing_signals_4": "Railroad Crossing Signaler_Pole top part[4]",
+  "item.cjbj.setting_rods": "Setting rods",
+
+  "itemGroup.cjbj.main_menu": "城建不建 | Main menu",
+
+  "block.CJBJ.example_block": "Occupying Square (Computing)"
 }

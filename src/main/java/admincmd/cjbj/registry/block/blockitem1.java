@@ -23,11 +23,11 @@ public class blockitem1 {
         Registry.register(Registries.ITEM, new Identifier("cjbj", "railway_crossing_signals_2"), new BlockItem(Registries.BLOCK.get(new Identifier("cjbj", "railway_crossing_signals_2")), new FabricItemSettings()));
         Registry.register(Registries.ITEM, new Identifier("cjbj", "railway_crossing_signals_3"), new BlockItem(Registries.BLOCK.get(new Identifier("cjbj", "railway_crossing_signals_3")), new FabricItemSettings()));
         Registry.register(Registries.ITEM, new Identifier("cjbj", "railway_crossing_signals_4"), new BlockItem(Registries.BLOCK.get(new Identifier("cjbj", "railway_crossing_signals_4")), new FabricItemSettings()));
+        Registry.register(Registries.ITEM, new Identifier("cjbj", "highway_signage_racking_pole_crossbar_n"), new BlockItem(Registries.BLOCK.get(new Identifier("cjbj", "highway_signage_racking_pole_crossbar_n")), new FabricItemSettings()));
 
 
-
-        //Registry.register(Registries.ITEM, new Identifier("tutorial","railroad_pile_yell"), new BlockItem(StandardBlock, new FabricItemSettings()));
-        //Registry.register(Registries.ITEM, new Identifier("tutorial","railway_crossing_signals_0"), Registries.BLOCK.get(new Identifier("cjbj", "example_block")));
+        //Registry.register(Registries.ITEM, new Identifier("cjbj","highway_signage_racking_pole_crossbar_n"), new BlockItem(StandardBlock, new FabricItemSettings()));
+        //Registry.register(Registries.ITEM, new Identifier("cjbj","highway_signage_racking_pole_crossbar_n"), Registries.BLOCK.get(new Identifier("cjbj", "highway_signage_racking_pole_crossbar_n")));
         //Registry.register(Registries.ITEM, new Identifier("tutorial","railway_crossing_signals_1"), Registries.BLOCK.get(new Identifier("cjbj", "example_block")));
         //Registry.register(Registries.ITEM, new Identifier("tutorial","railway_crossing_signals_2"), Registries.BLOCK.get(new Identifier("cjbj", "example_block")));
         //Registry.register(Registries.ITEM, new Identifier("tutorial","railway_crossing_signals_3"), Registries.BLOCK.get(new Identifier("cjbj", "example_block")));
