@@ -1,0 +1,22 @@
+{
+  "item.cjbj.railway_crossing_signals_0": "铁路道口信号机 柱体部分[0]",
+  "item.cjbj.railway_crossing_signals_1": "铁路道口信号机 标识板部分[1]",
+  "item.cjbj.railway_crossing_signals_2": "铁路道口信号机 通行信号机部分[2]",
+  "item.cjbj.railway_crossing_signals_3": "铁路道口信号机 停车信号灯部分[3]",
+  "item.cjbj.railway_crossing_signals_4": "铁路道口信号机 杆顶部分[4]",
+  "item.cjbj.setting_rods": "设置刷",
+
+  "itemGroup.cjbj.main_menu": "城建不建 | 主菜单",
+
+  "block.cjbj.example_block": "占位方块",
+
+  "block.cjbj.warning_sign_a": "Warning labels (type a)",
+  "block.cjbj.warning_sign_b": "Warning labels (type b)",
+  "block.cjbj.warning_sign_c": "Warning labels (type c)",
+  "block.cjbj.warning_sign_d": "Warning labels (type d)",
+  "block.cjbj.warning_sign_e": "Warning labels (type e)",
+  "block.cjbj.warning_sign_f": "Warning labels (type f)",
+  "block.cjbj.warning_sign_g": "Warning labels (type g)",
+  "block.cjbj.warning_sign_h": "Warning labels (type h)",
+  "block.cjbj.warning_sign_i": "Warning labels (type i)"
+}
