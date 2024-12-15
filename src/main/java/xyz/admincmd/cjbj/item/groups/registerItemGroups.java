@@ -23,7 +23,8 @@ public class registerItemGroups {
             "warning_sign_g",
             "warning_sign_h",
             "warning_sign_i",
-            "railroad_car_stopper_a",};
+            "railroad_car_stopper_a",
+            "railroad_car_stopper_b",};
 
     public static void initializeModItemGroups() {
         LOGLOG.info("一开始注册物品组 > 54645h544546");
@@ -36,7 +37,7 @@ public class registerItemGroups {
                 new Identifier(CJBJ2.MOD_ID,name),
                 FabricItemGroup.builder().displayName(Text.translatable("itemGroup."+MOD_ID+"."+name))
                         .icon(() -> new ItemStack(Registries.ITEM.get(new Identifier(MOD_ID, icon)))).entries((displayContext, entries) -> {
-                            entries.add(Registries.ITEM.get(new Identifier(MOD_ID, "sett_rods")));
+                            //entries.add(Registries.ITEM.get(new Identifier(MOD_ID, "sett_rods")));
                             for (String item : items)
                                 entries.add(Registries.ITEM.get(new Identifier(CJBJ2.MOD_ID,item)));
                         }).build());

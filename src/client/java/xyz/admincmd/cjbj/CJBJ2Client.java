@@ -12,7 +12,7 @@ public class CJBJ2Client implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
 
-		ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> 0x3495eb, registerBlock.COLOR_BLOCK);
+		// ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> 0x3495eb, registerBlock.COLOR_BLOCK);
 		// This entrypoint is suitable for setting up client-specific logic, such as rendering.
 	}
 }
