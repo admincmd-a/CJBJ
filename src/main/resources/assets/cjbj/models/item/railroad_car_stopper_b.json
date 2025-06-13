@@ -1,0 +1,9 @@
+{
+  "variants": {
+    "facing=north": { "model": "cjbj:block/railroad_car_stopper_b"     , "uvlock": true },
+    "facing=east" : { "model": "cjbj:block/railroad_car_stopper_b"     , "y":  90, "uvlock": true },
+    "facing=south": { "model": "cjbj:block/railroad_car_stopper_b"     , "y": 180, "uvlock": true },
+    "facing=west" : { "model": "cjbj:block/railroad_car_stopper_b"     , "y": 270, "uvlock": true },
+  }
+}
+

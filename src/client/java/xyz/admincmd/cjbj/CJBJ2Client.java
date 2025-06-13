@@ -1,18 +1,19 @@
 package xyz.admincmd.cjbj;
 
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
-import xyz.admincmd.cjbj.block.registerBlock;
 
-import static net.minecraft.block.Blocks.register;
+import static xyz.admincmd.cjbj.block._var.*;
+import static xyz.admincmd.cjbj.main.CONSOLE;
+import static xyz.admincmd.cjbj.mixin.client.block.ModBlockClient.setBlockImageA;
 
 public class CJBJ2Client implements ClientModInitializer {
+
+	public static final Block[] A_BLOCKS = {FIRE_DOOR_A_BLOCK_OBJECT, FIRE_DOOR_B_BLOCK_OBJECT};
+
 	@Override
 	public void onInitializeClient() {
-
-		// ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> 0x3495eb, registerBlock.COLOR_BLOCK);
-		// This entrypoint is suitable for setting up client-specific logic, such as rendering.
+		CONSOLE.info("CJBJ2 Client initialized.");
+//		setBlockImageA(A_BLOCKS);
 	}
 }

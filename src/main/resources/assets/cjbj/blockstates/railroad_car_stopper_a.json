@@ -1,7 +1,17 @@
 {
   "variants": {
-    "": {
-      "model": "cjbj:block/railroad_car_stopper_a"
-    }
+    "facing=north,nagle=0": { "model": "cjbj:block/railroad_car_stopper_a"     , "uvlock": true },
+    "facing=east,nagle=0" : { "model": "cjbj:block/railroad_car_stopper_a"     , "y":  90, "uvlock": true },
+    "facing=south,nagle=0": { "model": "cjbj:block/railroad_car_stopper_a"     , "y": 180, "uvlock": true },
+    "facing=west,nagle=0" : { "model": "cjbj:block/railroad_car_stopper_a"     , "y": 270, "uvlock": true },
+    "facing=north,nagle=1": { "model": "cjbj:block/railroad_car_stopper_a_x225", "uvlock": true },
+    "facing=east,nagle=1" : { "model": "cjbj:block/railroad_car_stopper_a_x225", "y":  90, "uvlock": true },
+    "facing=south,nagle=1": { "model": "cjbj:block/railroad_car_stopper_a_x225", "y": 180, "uvlock": true },
+    "facing=west,nagle=1" : { "model": "cjbj:block/railroad_car_stopper_a_x225", "y": 270, "uvlock": true },
+    "facing=north,nagle=2": { "model": "cjbj:block/railroad_car_stopper_a_x45" , "uvlock": true },
+    "facing=east,nagle=2" : { "model": "cjbj:block/railroad_car_stopper_a_x45" , "y":  90, "uvlock": true },
+    "facing=south,nagle=2": { "model": "cjbj:block/railroad_car_stopper_a_x45" , "y": 180, "uvlock": true },
+    "facing=west,nagle=2" : { "model": "cjbj:block/railroad_car_stopper_a_x45" , "y": 270, "uvlock": true }
   }
 }
+

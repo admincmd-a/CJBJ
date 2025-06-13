@@ -1,21 +1,25 @@
 {
-  "item.cjbj.setting_rods": "Setting rods",
+  "item.cjbj.setting_rods": "CJBJ Setting rods",
 
   "itemGroup.cjbj.main_menu": "城建不建 | Main menu",
 
-  "block.cjbj.example_block": "Occupying Square (Computing)",
-  "block.cjbj.railway_crossing_signals_0": "Railroad Crossing Signaler_Pole Part[0]",
-  "block.cjbj.railway_crossing_signals_1": "Railroad Crossing Signaler_Marking board part[1]",
-  "block.cjbj.railway_crossing_signals_2": "Railroad Crossing Signaler_Passing Signal Light Part[2]",
-  "block.cjbj.railway_crossing_signals_3": "Railroad Crossing Signaler_No Passing Signal Part[3]",
-  "block.cjbj.railway_crossing_signals_4": "Railroad Crossing Signaler_Pole top part[4]",
-  "block.cjbj.warning_sign_a": "Warning labels (type a)",
-  "block.cjbj.warning_sign_b": "Warning labels (type b)",
-  "block.cjbj.warning_sign_c": "Warning labels (type c)",
-  "block.cjbj.warning_sign_d": "Warning labels (type d)",
-  "block.cjbj.warning_sign_e": "Warning labels (type e)",
-  "block.cjbj.warning_sign_f": "Warning labels (type f)",
-  "block.cjbj.warning_sign_g": "Warning labels (type g)",
-  "block.cjbj.warning_sign_h": "Warning labels (type h)",
-  "block.cjbj.warning_sign_i": "Warning labels (type i)"
+  "block.cjbj.example_block":                 "Occupying Square (Computing)",
+
+  "block.cjbj.railway_crossing_signals_0":    "Railroad Crossing Signaler_Pole Part[0]",
+  "block.cjbj.railway_crossing_signals_1":    "Railroad Crossing Signaler_Marking board part[1]",
+  "block.cjbj.railway_crossing_signals_2":    "Railroad Crossing Signaler_Passing Signal Light Part[2]",
+  "block.cjbj.railway_crossing_signals_3":    "Railroad Crossing Signaler_No Passing Signal Part[3]",
+  "block.cjbj.railway_crossing_signals_4":    "Railroad Crossing Signaler_Pole top part[4]",
+  "block.cjbj.warning_sign_a":                "C_Warning (a)",
+  "block.cjbj.warning_sign_b":                "C_Warning (b)",
+  "block.cjbj.warning_sign_c":                "C_Warning (c)",
+  "block.cjbj.warning_sign_d":                "C_Warning (d)",
+  "block.cjbj.warning_sign_e":                "C_Warning (e)",
+  "block.cjbj.warning_sign_f":                "C_Warning (f)",
+  "block.cjbj.warning_sign_g":                "C_Warning (g)",
+  "block.cjbj.warning_sign_h":                "C_Warning (h)",
+  "block.cjbj.warning_sign_i":                "C_Warning (i)",
+  "block.cjbj.railroad_car_stopper_a":        "Railroad Car Stopper (a)",
+  "block.cjbj.railroad_car_stopper_b":        "Railroad Car Stopper (b)",
+  "block.cjbj.railroad_car_stopper_c":        "Railroad Car Stopper (c)"
 }
