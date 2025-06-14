@@ -1,32 +1,27 @@
 package xyz.admincmd.cjbj.errorSet;
 
-import xyz.admincmd.cjbj.ModSystemSet;
-
 import java.util.Objects;
 
 import static xyz.admincmd.cjbj.errorSet.ERROR.*;
+import static xyz.admincmd.cjbj.errorSet.ERROR.ERROR_CODE_CRITICAL;
 import static xyz.admincmd.cjbj.errorSet.MsgWindowsW.*;
 import static xyz.admincmd.cjbj.main.CONSOLE;
 
-public class errorSet {
-    private static ERROR[] errors;
-    private static boolean propertyIsSet;
+public class errorGet {
 
-    static {
-        propertyIsSet = true;
-    }
+    private  ERROR[] errors;
 
     // 错误存储和处理的接口（可根据实际需求实现）
     public interface ErrorStore {
         void store(ERROR error);
     }
 
-    private static ErrorStore errorStore = new ConsoleErrorStore(); // 默认实现
+    private  ErrorStore errorStore = new ConsoleErrorStore(); // 默认实现
 
     /**
      * 设置自定义错误存储
      */
-    public static void setErrorStore(ErrorStore store) {
+    public  void setErrorStore(ErrorStore store) {
         errorStore = Objects.requireNonNull(store, "ErrorStore cannot be null");
     }
 
@@ -40,7 +35,7 @@ public class errorSet {
      * @param args         格式化参数
      * @return {@code false} 总是返回false，便于在return语句中使用
      */
-    public static boolean addError(int errorCode, int errorLevel, String errorMessage, Object... args) {
+    public  boolean addError(int errorCode, int errorLevel, String errorMessage, Object... args) {
         return addSetError(errorCode, errorLevel, -1, errorMessage, args);
     }
 
@@ -53,11 +48,11 @@ public class errorSet {
      * @param args         格式化参数
      * @return {@code false} 总是返回false，便于在return语句中使用
      */
-    public static boolean addError(int errorCode, int errorLevel, int exitCode, Class<? extends Exception> errorClass, String errorMessage, Object... args) {
+    public  boolean addError(int errorCode, int errorLevel, int exitCode, Class<? extends Exception> errorClass, String errorMessage, Object... args) {
         return addSetError(errorCode, errorLevel, exitCode, errorMessage, args);
     }
 
-    private static boolean addSetError(int errorCode, int errorLevel, int exitCode, String errorMessage, Object[] args) {
+    private  boolean addSetError(int errorCode, int errorLevel, int exitCode, String errorMessage, Object[] args) {
         // 格式化错误消息（支持 {} 和 %s 两种占位符）
         String formatted = formatErrorMessage(errorMessage, args);
 
@@ -85,7 +80,7 @@ public class errorSet {
                     要终止程序，请单击“取消”按钮。
                     """, String.valueOf(error.getCODE()), TYPE_ERROR_ICON | TYPE_OK_CANCEL_BUTTON)) == TYPE_BUTTON_OK) {
                     CONSOLE.info("在上一个错误发生后，用户取消了程序的运行。");
-                    ModSystemSet.exit(exitCode);
+
                 } else {
                     CONSOLE.info("在上一个错误发生后，用户选择了继续运行程序。");
                 }
@@ -121,7 +116,7 @@ public class errorSet {
      * @param errorLevel   错误等级
      * @return {@code false}
      */
-    public static boolean addError(String errorMessage, int errorCode, int errorLevel) {
+    public  boolean addError(String errorMessage, int errorCode, int errorLevel) {
         return addError(new ERROR(errorMessage, errorCode, errorLevel));
     }
 
@@ -133,7 +128,7 @@ public class errorSet {
      * @param exitCode     退出代码，若为{@code 0}则由返回后代码处理
      * @return {@code false}
      */
-    public static boolean addError(String errorMessage, int errorCode, int errorLevel, int exitCode) {
+    public  boolean addError(String errorMessage, int errorCode, int errorLevel, int exitCode) {
         return addError(errorCode, errorLevel, errorMessage, ERROR_CODE_CRITICAL);
     }
 
@@ -142,7 +137,7 @@ public class errorSet {
      * @param error 异常对象
      * @return {@code false}
      */
-    public static boolean addError(ERROR error) {
+    public  boolean addError(ERROR error) {
         return addError(error.getMESSAGE(), error.getCODE(), error.getLEVEL(), error.getEXIT_CODE());
     }
 
@@ -150,7 +145,7 @@ public class errorSet {
     /**
      * 智能格式化错误消息（同时支持 {} 和 %s 占位符）
      */
-    private static String formatErrorMessage(String template, Object... args) {
+    private  String formatErrorMessage(String template, Object... args) {
         if (args == null || args.length == 0) {
             return template;
         }
@@ -179,14 +174,14 @@ public class errorSet {
      * @param args 格式化参数
      * @return 格式化后的消息
      */
-    public static String formatMessage(String template, Object... args) {
+    public  String formatMessage(String template, Object... args) {
         return formatErrorMessage(template, args);
     }
 
     /**
      * 使用 {} 占位符格式化消息
      */
-    private static String formatWithBraces(String template, Object... args) {
+    private  String formatWithBraces(String template, Object... args) {
         StringBuilder result = new StringBuilder();
         int lastIndex = 0;
         int argIndex = 0;
@@ -226,27 +221,23 @@ public class errorSet {
     /**
      * 默认错误存储实现（输出到控制台）
      */
-    private static class ConsoleErrorStore implements ErrorStore {
+    private  class ConsoleErrorStore implements ErrorStore {
         @Override
         public void store(ERROR error) {
             CONSOLE.error(error.toString());
         }
     }
 
-    public static void clearErrors() {
+    public  void clearErrors() {
         errors = new ERROR[0];
     }
 
-    public static ERROR[] getErrors() {
+    public  ERROR[] getErrors() {
         return errors;
     }
 
-    public static ErrorStore getErrorStore() {
+    public  ErrorStore getErrorStore() {
         return errorStore;
-    }
-
-    public static boolean isPropertyIsSet() {
-        return propertyIsSet;
     }
 
     @Override
@@ -264,7 +255,7 @@ public class errorSet {
         return super.toString();
     }
 
-    public static boolean printFileErrors() {
+    public  boolean printFileErrors() {
         if (errors.length == 0) {
             return false;
         }
@@ -272,6 +263,3 @@ public class errorSet {
         return false;
     }
 }
-/*
- *
- * */

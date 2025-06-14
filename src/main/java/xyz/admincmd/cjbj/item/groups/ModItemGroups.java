@@ -87,7 +87,7 @@ public class ModItemGroups {
         }
         itemGroupsName[groupCount] = path;
         itemGroupsIcon[groupCount] = icon;
-        itemGroupsMen[groupCount] = new Item[65536]; // 初始化物品数组
+        itemGroupsMen[groupCount] = new Item[0]; // 初始化物品数组
         groupCount++;
     }
 
@@ -100,7 +100,7 @@ public class ModItemGroups {
         boolean found = false;
         for (int i = 0; i < groupCount; i++) {
             if (itemGroupsName[i].equals(path)) {
-                itemGroupsMen[i] = new Item[65536]; // 重置物品数组
+                itemGroupsMen[i] = new Item[0]; // 重置物品数组
                 itemGroupsName[i] = ""; // 清空名称
                 itemGroupsIcon[i] = ""; // 清空图标
                 found = true;

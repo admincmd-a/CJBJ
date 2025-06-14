@@ -5,15 +5,20 @@
 
 package xyz.admincmd.cjbj;
 
-import com.sun.jna.platform.win32.User32;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import xyz.admincmd.cjbj.block.ModBlock;
-import xyz.admincmd.cjbj.inc.message;
+import xyz.admincmd.cjbj.errorSet.ERROR;
 import xyz.admincmd.cjbj.item.ModItem;
 import xyz.admincmd.cjbj.item.groups.ModItemGroups;
-import xyz.admincmd.cjbj.inc.message.*;
+
+import javax.xml.crypto.Data;
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+import java.time.LocalDateTime;
+
+import static xyz.admincmd.cjbj.errorSet.errorSet.addError;
 
 /**
  *
@@ -30,13 +35,28 @@ public class main {
     public static Boolean isDebug = false;
     public static Boolean isGUI = GraphicsEnvironment.isHeadless();
     public static final Boolean isOcCode = false;
+    public static final LocalDateTime runData;
+    public static final String runAbsolutePath;
+    public static final String runCanonicalPath;
+    public static final String logAbsolutePath;
+    public static final String runLogFilePath;
 
     static {
-        System.loadLibrary("user32");
+        System.setProperty("jna.encoding", "UTF-16LE"); // 修改编码格式
+        runData = LocalDateTime.now();
+        runAbsolutePath = new File("").getAbsolutePath();
+        try {
+            runCanonicalPath = new File("").getCanonicalPath();
+        } catch (IOException e) {
+            addError(new ERROR("获取运行目录失败：" + e.getMessage(), -12, ERROR.ERROR_CODE_WARN));
+            throw new RuntimeException(e);
+        }
+
+        logAbsolutePath = runAbsolutePath + "/logs/cjbj/";
+        runLogFilePath = logAbsolutePath + "catch_" + runData + ".log";
     }
 
     public static void main(String[] args) {
-
 
     }
 

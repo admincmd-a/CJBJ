@@ -10,8 +10,8 @@ public class _var {
 
     public static final Item CONFIG_TOOL_ITEM_OBJECT = registerItem(CONFIG_TOOL_ID, new Item(new FabricItemSettings()));
 
-    public static final String[] CONFIG_TOOL_MODE = {
-            CONFIG_TOOL_ID,
+    public static final Item[] CONFIG_TOOL_MODE = {
+            CONFIG_TOOL_ITEM_OBJECT,
     };
 
     public static void initialize() {}

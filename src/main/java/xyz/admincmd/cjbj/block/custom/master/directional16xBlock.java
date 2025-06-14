@@ -5,6 +5,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.HorizontalFacingBlock;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -84,7 +85,13 @@ public class directional16xBlock extends HorizontalFacingBlock {
 
 
             // 判断是否为工具类物品
-            boolean ItemModeIsConfig = false; for (String ItemNameMods : CONFIG_TOOL_MODE) {if (Objects.equals(ItemNameMods, player.getMainHandStack().getItem().getName().toString())) {ItemModeIsConfig = true;break;}}
+            boolean ItemModeIsConfig = false;
+            for (Item ItemNameMods : CONFIG_TOOL_MODE) {
+                if (Objects.equals(ItemNameMods, player.getMainHandStack().getItem())) {
+                    ItemModeIsConfig = true;
+                    break;
+                }
+            }
 
             if (ItemModeIsConfig) {
                 switch (state.get(ANGLE_TYPE)) { // 切换不同角度

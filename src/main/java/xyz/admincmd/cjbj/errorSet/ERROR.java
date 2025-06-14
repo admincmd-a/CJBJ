@@ -44,13 +44,20 @@ public class ERROR {
         TIME = new Date();
     }
 
+    /**
+     * 错误信息的构造函数。
+     * @param errorMessage 错误信息
+     * @param errorCode 错误代码
+     * @param errorLevel 错误等级
+     */
     public ERROR(String errorMessage, int errorCode, int errorLevel) {
         MESSAGE = errorMessage;
         CODE = errorCode;
         LEVEL = errorLevel;
-        EXIT_CODE = 0;
+        EXIT_CODE = -225;
         TIME = new Date();
     }
+
 
     public int getCODE() {
         return CODE;
@@ -70,5 +77,9 @@ public class ERROR {
 
     public int getEXIT_CODE() {
         return EXIT_CODE;
+    }
+
+    public String toString() {
+        return "ERROR: " + MESSAGE + " (CODE: " + CODE + ", LEVEL: " + LEVEL + ", EXIT_CODE: " + EXIT_CODE + ", TIME: '" + TIME + "')";
     }
 }

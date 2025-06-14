@@ -8,6 +8,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LightningEntity;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -84,8 +85,13 @@ public class directional8xBlock extends HorizontalFacingBlock {
 
 
             // 判断是否为工具类物品
-            boolean ItemModeIsConfig = false; for (String ItemNameMods : CONFIG_TOOL_MODE) {if (Objects.equals(ItemNameMods, player.getMainHandStack().getItem().getName().toString())) {ItemModeIsConfig = true;break;}}
-
+            boolean ItemModeIsConfig = false;
+            for (Item ItemNameMods : CONFIG_TOOL_MODE) {
+                if (Objects.equals(ItemNameMods, player.getMainHandStack().getItem())) {
+                    ItemModeIsConfig = true;
+                    break;
+                }
+            }
             if (ItemModeIsConfig) {
                 if (state.get(ANGLE_TYPE) == 1) {
                     world.setBlockState(pos, state.with(ANGLE_TYPE, 0));
