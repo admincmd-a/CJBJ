@@ -1,0 +1,28 @@
+{
+  "item.cjbj2.config_tool": "CJBJ Setting rods",
+
+  "itemGroup.cjbj2.main_menu": "城建不建 | Main menu",
+
+  "block.cjbj2.example_block":                 "Occupying Square (Computing)",
+
+  "block.cjbj2.railway_crossing_signals_0":    "Railroad Crossing Signaler_Pole Part[0]",
+  "block.cjbj2.railway_crossing_signals_1":    "Railroad Crossing Signaler_Marking board part[1]",
+  "block.cjbj2.railway_crossing_signals_2":    "Railroad Crossing Signaler_Passing Signal Light Part[2]",
+  "block.cjbj2.railway_crossing_signals_3":    "Railroad Crossing Signaler_No Passing Signal Part[3]",
+  "block.cjbj2.railway_crossing_signals_4":    "Railroad Crossing Signaler_Pole top part[4]",
+  "block.cjbj2.warning_sign_a":                "C_Warning (a)",
+  "block.cjbj2.warning_sign_b":                "C_Warning (b)",
+  "block.cjbj2.warning_sign_c":                "C_Warning (c)",
+  "block.cjbj2.warning_sign_d":                "C_Warning (d)",
+  "block.cjbj2.warning_sign_e":                "C_Warning (e)",
+  "block.cjbj2.warning_sign_f":                "C_Warning (f)",
+  "block.cjbj2.warning_sign_g":                "C_Warning (g)",
+  "block.cjbj2.warning_sign_h":                "C_Warning (h)",
+  "block.cjbj2.warning_sign_i":                "C_Warning (i)",
+  "block.cjbj2.railroad_car_stopper_a":        "Railroad Car Stopper (a)",
+  "block.cjbj2.railroad_car_stopper_b":        "Railroad Car Stopper (b)",
+  "block.cjbj2.railroad_car_stopper_c":        "Railroad Car Stopper (c)",
+  "block.cjbj2.road_bar": "Road Bar",
+  "construction_right_guided":"Construction Left Guided",
+  "construction_right_guided_": "Construction Left Guided 2"
+}
