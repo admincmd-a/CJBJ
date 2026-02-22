@@ -3,6 +3,7 @@ package xyz.admincmd.cjbj.item;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.player.PlayerEntity;
 import xyz.admincmd.cjbj.CJBJ2;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -109,11 +110,28 @@ public class ModItem {
      * @return {@code Item} | {@code null} 物品实例，如没有该物品，返回 null
      */
     public static Item getItem(String name) {
-        if (Registries.ITEM.containsId(Identifier.of(MOD_ID,name))) { // 检查注册表中是否存在该物品
+        if (!Registries.ITEM.containsId(Identifier.of(MOD_ID,name))) { // 检查注册表中是否存在该物品
             CONSOLE.warn("Item '{}' already exists, please check the registry.", name);
             return null;
         }
         return Registries.ITEM.get(Identifier.of(MOD_ID, name));
+    }
+
+    public static boolean isConfigTool(PlayerEntity player, boolean mainHand) {
+        if (mainHand) {
+            for (Item ItemNameMods : CONFIG_TOOL_MODE) {
+                if (Objects.equals(ItemNameMods, player.getMainHandStack().getItem())) {
+                    return true;
+                }
+            }
+        } else {
+            for (Item ItemNameMods : CONFIG_TOOL_MODE) {
+                if (Objects.equals(ItemNameMods, player.getOffHandStack().getItem())) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     public static void initialize() {

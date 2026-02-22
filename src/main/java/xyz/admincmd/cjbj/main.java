@@ -79,7 +79,7 @@ public class main {
 
         CONSOLE.info("Hello Fabric world!");
 
-//        message.MessageBoxA(0, "Hello Fabric world!", "提示", 16);
+        // message.MessageBoxA(0, "Hello Fabric world!", "Info", 16);
 
         if (isGUI) {
             CONSOLE.info("GUI Is Not");
@@ -107,7 +107,7 @@ public class main {
 				城建不建 初始化完毕 =====================================""");
 
         if (isOcCode) { // 如果 OC 工作处于激活状态，则退出
-            CONSOLE.info("OC 工作处于激活状态，退出");
+            CONSOLE.info("System Exit");
             System.exit(0);
         }
     }

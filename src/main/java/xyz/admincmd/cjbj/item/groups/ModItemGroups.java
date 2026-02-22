@@ -8,6 +8,10 @@ import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import xyz.admincmd.cjbj.CJBJ2;
+import xyz.admincmd.cjbj.errorSet.ERROR;
+
+import java.sql.Date;
+import java.sql.Time;
 
 import static xyz.admincmd.cjbj.main.CONSOLE;
 import static xyz.admincmd.cjbj.main.MOD_ID;
@@ -16,17 +20,19 @@ import static xyz.admincmd.cjbj.item._var.CONFIG_TOOL_ID;
 
 public class ModItemGroups {
     private static final int itemGroupsMax  = 16; // 最大物品组数量
-    private static Item[][]  itemGroupsMen  = new Item[itemGroupsMax][]; // 物品组数组
+    private static final int itemGroupsItemMax = 999;
+    private static Item[][]  itemGroupsMen  = new Item[itemGroupsMax][itemGroupsItemMax]; // 物品组数组
     private static String[]  itemGroupsIcon = new String[itemGroupsMax]; // 物品组图标
     private static String[]  itemGroupsName = new String[itemGroupsMax]; // 物品组名称
     private static int       groupCount = 0; // 记录当前物品组的数量
+    private static int       classCode = 0x1256;
 
     public static void initialize() {
         _var.initialize(); // 初始化变量
         CONSOLE.info("正在注册物品组...");
         for (int i = 0; i < groupCount; i++) {
             if (itemGroupsName[i] != null && !itemGroupsName[i].isEmpty()) {
-                registerItemGroups(itemGroupsMen[i], itemGroupsName[i], itemGroupsIcon[i]);
+                registerItemGroups(itemGroupsMen[i + 1], itemGroupsName[i], itemGroupsIcon[i]);
             }
         }
         CONSOLE.debug("物品组注册完毕!");
@@ -40,38 +46,39 @@ public class ModItemGroups {
      */
     public static void registerItemGroups(Item[] items, String name, String icon) {
         // item：string型数组，欲注册进ItemGroups的Item，name：注册表名称，icon：指定图标
-        CONSOLE.debug("Registering item group Name: {} , Icon: {} , Items: {}", name, icon, items);
+        CONSOLE.debug("[registerItemGroups] Registering item group Name: {} , Icon: {} , Items: {}", name, icon, items);
         try {
             // 前置检查
             if (items == null || items.length == 0) {
-                CONSOLE.error("No items in group {}!", name);
+                xyz.admincmd.cjbj.errorSet.errorSet.addError(0x001, ERROR.ERROR_CODE_WARN ,0x1256001, ModItemGroups.class ,"No item in group {}!", name);
                 return;
             }
             if (name == null || name.isEmpty()) {
-                CONSOLE.error("No name for group {}!", name);
+                xyz.admincmd.cjbj.errorSet.errorSet.addError(0x001, ERROR.ERROR_CODE_WARN ,0x1256001, ModItemGroups.class ,"No name in group {}!", name);
                 return;
             }
             if (icon == null || icon.isEmpty()) {
-                CONSOLE.error("No icon for group {}!", name);
-                return;
+                xyz.admincmd.cjbj.errorSet.errorSet.addError(0x001, ERROR.ERROR_CODE_WARN ,0x1256001, ModItemGroups.class ,"No icon in group {}! Assign the 'example_block' item as an icon", name);
+                icon = "example_block";
             }
+            String finalIcon = icon;
             Registry.register(Registries.ITEM_GROUP,
                     new Identifier(MOD_ID, name),
                     FabricItemGroup.builder().displayName(
                                     Text.translatable("itemGroup." + MOD_ID + "." + name))
-                            .icon(() -> new ItemStack(getItem(icon)))
+                            .icon(() -> new ItemStack(getItem(finalIcon)))
                             .entries((displayContext, entries) -> {
                                 for (Item item : items) {
                                     if (item == null) {
                                         continue;
                                     }
                                     entries.add(item);
-                                    CONSOLE.debug("Adding item {} to Group {}", item, name);
+                                    CONSOLE.debug("[registerItemGroups] Adding item {} to Group {}", item, name);
                                 }
                             })
                             .build());
         } catch (Exception e) {
-            CONSOLE.error("Failed to register item group Name: {} , Icon: {} , Items: {} , Error: {}", name, icon, items, e);
+            CONSOLE.error("[registerItemGroups] Failed to register item group Name: {} , Icon: {} , Items: {} , Error: {}", name, icon, items, e);
         }
     }
 
@@ -127,23 +134,21 @@ public class ModItemGroups {
         try {
             CONSOLE.debug("Adding Item '{}' to Group '{}'", item, group);
             if (groupCount == 0) { // 物品组未找到
-                CONSOLE.warn("All ItemGroup '{}' not found! , adding to Group...", group);
+                CONSOLE.debug("All ItemGroup '{}' not found! , adding to Group...", group);
                 addItemGroup(group, CONFIG_TOOL_ID);
             }
-            for (int i = 0; i < groupCount; i++) {
-                if (itemGroupsName[i].equals(group)) {// 找到物品组
+            for (int i = 1; i < groupCount + 1; i++) {
+                if (itemGroupsName[i - 1].equals(group)) {// 找到物品组
                     for (int j = 0; j < itemGroupsMen[i].length; j++) {
                         if (itemGroupsMen[i][j] == null) {
                             itemGroupsMen[i][j] = getItem(item);
                             break;
                         }
                     }
-                    break;
                 }
             }
         } catch (Exception e) {
             CONSOLE.error("Failed to add item {} to group {}! , Error: {}", item, group, e);
-            return;
         }
     }
 
@@ -158,11 +163,20 @@ public class ModItemGroups {
         for (int i = 0; i < groupCount; i++) {
             if (itemGroupsName[i].equals(group)) {
                 boolean foundItem = false;
-                for (int j = 0; j < itemGroupsMen[i].length; j++) {
-                    if (itemGroupsMen[i][j] != null && itemGroupsMen[i][j].equals(item)) {
-                        itemGroupsMen[i][j] = null; // 清空物品
-                        foundItem = true;
+                if (itemGroupsMen[i] != null) {
+//                    for (Item j : itemGroupsMen[i]) {
+//                        if (j == null) {
+//                            itemGroupsMen[i]
+//                        }
+//                    }
+                    for (int j = 0; j < itemGroupsMen[i].length; j++) {
+                        if (itemGroupsMen[i][j] != null && itemGroupsMen[i][j].equals(item)) {
+                            itemGroupsMen[i][j] = null; // 清空物品
+                            foundItem = true;
+                        }
                     }
+                } else {
+                    CONSOLE.error("Item {} not found in group {}! Error: Null", item, group);
                 }
                 if (!foundItem) {
                     CONSOLE.error("Item {} not found in group {}!", item, group);

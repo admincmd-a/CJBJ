@@ -2,8 +2,8 @@ package xyz.admincmd.cjbj.inc;
 import com.sun.jna.Native;
 import com.sun.jna.platform.win32.WinDef;
 import com.sun.jna.win32.StdCallLibrary;
-
-import javax.xml.crypto.Data;
+import xyz.admincmd.cjbj.errorSet.ERROR;
+import xyz.admincmd.cjbj.item.groups.ModItemGroups;
 
 public class WindowsErrorDialog {
 
@@ -21,7 +21,7 @@ public class WindowsErrorDialog {
         );
     }
 
-    public static final int MB_ICONERROR = 0x00000010;
+    public static final int MB_ICON_ERROR = 0x00000010;
     public static final int MB_OK = 0x00000000;
 
     public static void showErrorDialog(String title, String message) {
@@ -29,34 +29,36 @@ public class WindowsErrorDialog {
                 null,
                 message,
                 title,
-                MB_OK | MB_ICONERROR
+                MB_OK | MB_ICON_ERROR
         );
     }
 
     public static void main(String[] args) {
         System.setProperty("jna.encoding", "UTF-16LE");
         // 测试弹窗
-        showErrorDialog(
-                "Type Error 东似乎",
-                """
-                        ERROR:
-                        Java Virtual Machine cannot allocate memory.
-                        Please check the available memory and try again.
-                        at java.lang.Thread.run(Thread.java:748)
-                        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-                        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
-                        at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:297)
-                        at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
-                        at java.util.concurrent.ScheduledThreadPoolExecutor.execute(ScheduledThreadPoolExecutor.java:211)
-                        at java.util.concurrent.Executors$DelegatedExecutorService.execute(Executors.java:668)
-                        at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
-                        at java.util.concurrent.FutureTask.run(FutureTask.java:138)
-                        at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
-                        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
-                        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
-                        at java.lang.Thread.run(Thread.java:748)\n
-                        """
-        );
+        String name = "ssssssssss";
+        xyz.admincmd.cjbj.errorSet.errorSet.addError(0x001, ERROR.ERROR_CODE_WARN ,0x1256001, ModItemGroups.class ,"No item in group {}!", name);
+//        showErrorDialog(
+//                "Type Error 东似乎",
+//                """
+//                        ERROR:
+//                        Java Virtual Machine cannot allocate memory.
+//                        Please check the available memory and try again.
+//                        at java.lang.Thread.run(Thread.java:748)
+//                        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+//                        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+//                        at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:297)
+//                        at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
+//                        at java.util.concurrent.ScheduledThreadPoolExecutor.execute(ScheduledThreadPoolExecutor.java:211)
+//                        at java.util.concurrent.Executors$DelegatedExecutorService.execute(Executors.java:668)
+//                        at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+//                        at java.util.concurrent.FutureTask.run(FutureTask.java:138)
+//                        at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+//                        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+//                        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+//                        at java.lang.Thread.run(Thread.java:748)
+//                        """
+//        );
     }
 
 

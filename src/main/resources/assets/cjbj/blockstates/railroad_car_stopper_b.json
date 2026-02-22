@@ -1,9 +1,0 @@
-{
-  "variants": {
-    "facing=north": { "model": "cjbj:block/railroad_car_stopper_b"     },
-    "facing=east" : { "model": "cjbj:block/railroad_car_stopper_b"     , "y":  90},
-    "facing=south": { "model": "cjbj:block/railroad_car_stopper_b"     , "y": 180},
-    "facing=west" : { "model": "cjbj:block/railroad_car_stopper_b"     , "y": 270}
-  }
-}
-

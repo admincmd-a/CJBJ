@@ -1,0 +1,17 @@
+{
+  "variants": {
+    "angle=0,facing=north": { "model": "cjbj2:block/road_bar"               },
+    "angle=0,facing=east" : { "model": "cjbj2:block/road_bar"     , "y":  90},
+    "angle=0,facing=south": { "model": "cjbj2:block/road_bar"     , "y": 180},
+    "angle=0,facing=west" : { "model": "cjbj2:block/road_bar"     , "y": 270},
+    "angle=1,facing=north": { "model": "cjbj2:block/road_bar_x225"          },
+    "angle=1,facing=east" : { "model": "cjbj2:block/road_bar_x225", "y":  90},
+    "angle=1,facing=south": { "model": "cjbj2:block/road_bar_x225", "y": 180},
+    "angle=1,facing=west" : { "model": "cjbj2:block/road_bar_x225", "y": 270},
+    "angle=2,facing=north": { "model": "cjbj2:block/road_bar_x45"           },
+    "angle=2,facing=east" : { "model": "cjbj2:block/road_bar_x45" , "y":  90},
+    "angle=2,facing=south": { "model": "cjbj2:block/road_bar_x45" , "y": 180},
+    "angle=2,facing=west" : { "model": "cjbj2:block/road_bar_x45" , "y": 270}
+  }
+}
+

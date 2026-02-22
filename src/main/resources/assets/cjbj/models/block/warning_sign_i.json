@@ -1,6 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "cjbj:block/warning_sign_i"
-  }
-}

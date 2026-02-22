@@ -36,7 +36,7 @@ public class errorGet {
      * @return {@code false} 总是返回false，便于在return语句中使用
      */
     public  boolean addError(int errorCode, int errorLevel, String errorMessage, Object... args) {
-        return addSetError(errorCode, errorLevel, -1, errorMessage, args);
+        return addSetError(errorCode, errorLevel,null ,-1, errorMessage, args);
     }
 
     /**
@@ -48,53 +48,66 @@ public class errorGet {
      * @param args         格式化参数
      * @return {@code false} 总是返回false，便于在return语句中使用
      */
-    public  boolean addError(int errorCode, int errorLevel, int exitCode, Class<? extends Exception> errorClass, String errorMessage, Object... args) {
-        return addSetError(errorCode, errorLevel, exitCode, errorMessage, args);
+    public  boolean addError(int errorCode, int errorLevel, int exitCode, Class<?> errorClass, String errorMessage, Object... args) {
+        return addSetError(errorCode, errorLevel,errorClass , exitCode, errorMessage, args);
     }
 
-    private  boolean addSetError(int errorCode, int errorLevel, int exitCode, String errorMessage, Object[] args) {
+    private  boolean addSetError(int errorCode, int errorLevel,Class<?> errorClass, int exitCode, String errorMessage, Object[] args) {
         // 格式化错误消息（支持 {} 和 %s 两种占位符）
         String formatted = formatErrorMessage(errorMessage, args);
 
         // 创建错误记录
-        ERROR error = new ERROR(formatted, errorCode, errorLevel, exitCode);
+        ERROR error = new ERROR(formatted, errorCode, errorClass, errorLevel, exitCode);
 
         errorStore.store(error);
 
         switch (error.getLEVEL()) {
             case ERROR_CODE_UNKNOWN -> {
-                CONSOLE.warn("Error(UNKNOWN): '{}' ,Code: '{}'", formatted, error.getCODE());
+                CONSOLE.warn("[{}] Error(UNKNOWN): '{}' ,Code: '{}'",errorClass , formatted, error.getCODE());
             }
             case ERROR_CODE_WARN -> {
-                CONSOLE.error("Error(WARN): '{}' ,Code: '{}'", formatted, error.getCODE());
+                CONSOLE.error("[{}] Error(WARN): '{}' ,Code: '{}'",errorClass ,formatted, error.getCODE());
             }
             case ERROR_CODE_FATAL -> {
-                CONSOLE.error("Error(FATAL): '{}' ,Code: '{}'", formatted, error.getCODE());
-                if ((msgWindows("""
-                                运行时出错
-                                
-                                """+ formatted + """
+                CONSOLE.error("[{}] Error(FATAL): '{}' ,Code: '{}'",errorClass, formatted, error.getCODE());
+                int messageBox = (msgWindows("""
+                    运行时出错, 在模块 """ + errorClass + "发生代码为" + error.getCODE() + """
+                    
+                    """+ formatted + """
                     
                     
-                    要继续运行，请单击“确定”按钮。
-                    要终止程序，请单击“取消”按钮。
-                    """, String.valueOf(error.getCODE()), TYPE_ERROR_ICON | TYPE_OK_CANCEL_BUTTON)) == TYPE_BUTTON_OK) {
-                    CONSOLE.info("在上一个错误发生后，用户取消了程序的运行。");
+                    要立即终止程序，请单击“中止”；
+                    要尝试再次操作，请单击“重试”；
+                    要继续运行程序，请单击“忽略”。
+                    """, String.valueOf(error.getCODE()), TYPE_ERROR_ICON | TYPE_ABORT_RETRY_IGNORE_BUTTON));
+                switch (messageBox) {
+                    case TYPE_BUTTON_RETRY -> {
+                        return true;
+                    }
+                    case TYPE_BUTTON_IGNORE -> {
+                        return false;
+                    }
+                    case TYPE_BUTTON_ABORT -> {
+                        System.exit(error.getCODE());
+                        return false;
+                    }
+                    default -> {
+                        CONSOLE.error("Error(FATAL): '{}' ,Code: '{}', MessageBox: '{}'", formatted, error.getCODE(), messageBox);
+                        return false;
+                    }
 
-                } else {
-                    CONSOLE.info("在上一个错误发生后，用户选择了继续运行程序。");
                 }
             }
             case ERROR_CODE_CRITICAL -> {
                 // 输出到控制台
                 System.err.print("Error(CRITICAL): '" + formatted + "' ,Code: '" + errorCode + "' ,SystemExitCode: '" + error.getEXIT_CODE() + "'");
                 msgWindows("""
-                        运行时出错
-                        
-                        """ + formatted + """
+                    运行时出错, 且定义为不可恢复不可重试的灾难性错误, 在模块 """ + errorClass + "发生代码为" + error.getCODE() + """
+                    
+                    """ + formatted + """
                     
                     
-                    要终止程序，请单击“确定”按钮。""", "灾难性错误"/*String.valueOf(errorCode)*/, TYPE_ERROR_ICON | TYPE_OK_BUTTON);
+                    要终止程序，请单击“确定”。""", "灾难性错误"/*String.valueOf(errorCode)*/, TYPE_ERROR_ICON | TYPE_OK_BUTTON);
                 if (error.getEXIT_CODE() != 0) { // 非正常退出
                     throw new CjbjModError(formatted);
                 }

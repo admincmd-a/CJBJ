@@ -8,12 +8,12 @@ import net.minecraft.block.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+
+import static xyz.admincmd.cjbj.errorSet.ERROR.*;
 import static xyz.admincmd.cjbj.errorSet.errorSet.addError;
 
 import static xyz.admincmd.cjbj.block._var.EXAMPLE_BLOCK_OBJECT;
 import static xyz.admincmd.cjbj.block._var.FIRE_DOOR_B_BLOCK_ID;
-import static xyz.admincmd.cjbj.errorSet.ERROR.ERROR_CODE_CRITICAL;
-import static xyz.admincmd.cjbj.errorSet.ERROR.ERROR_CODE_CRITICAL;
 import static xyz.admincmd.cjbj.item.groups._var.MAIN_GROUP;
 import static xyz.admincmd.cjbj.main.CONSOLE;
 import static xyz.admincmd.cjbj.main.MOD_ID;
@@ -36,8 +36,10 @@ public class ModBlock {
             registerBlockItem(path); // 注册物品
             return block;
         } catch (Exception e) {
-            addError(0, ERROR_CODE_CRITICAL,"Failed to register block: '{}' , Class: {} , Error: '{}'",
-                    path, block.getClass().getName(), e.getMessage());
+            if (addError(0, ERROR_CODE_CRITICAL,"Failed to register block: '{}' , Class: {} , Error: '{}'",
+                    path, block.getClass().getName(), e.getMessage())) {
+                return registerBlock(path, block, false);
+            }
             return null; // 注册失败
         }
     }
@@ -59,8 +61,10 @@ public class ModBlock {
             }
             return block;
         } catch (Exception e) {
-            addError(0, ERROR_CODE_CRITICAL,"Failed to register block(isRegisterItem: '{}'): '{}' , Class: {} , Error: '{}'",
-                    registerItem, path, block.getClass().getName(), e.getMessage());
+            if (addError(0, ERROR_CODE_CRITICAL,"Failed to register block(isRegisterItem: '{}'): '{}' , Class: {} , Error: '{}'",
+                    registerItem, path, block.getClass().getName(), e.getMessage())) {
+                return registerBlock(path, block, false);
+            }
             return null;
         }
     }
@@ -95,12 +99,16 @@ public class ModBlock {
             }
             return block;
         } catch (ReflectiveOperationException | IllegalArgumentException e) { // 捕获所有反射异常
-            addError(-10, ERROR_CODE_CRITICAL,"Failed to register block(isRegisterItem: '{}'): '{}' , Class(.class): {} , Error: '{}'",
-                    blockClass.getName(), e.getMessage());
+            if (addError(-10, ERROR_CODE_CRITICAL,"Failed to register block(isRegisterItem: '{}'): '{}' , Class(.class): {} , Error: '{}'",
+                    blockClass.getName(), e.getMessage())) {
+                return registerBlock(path, blockClass, false);
+            }
             return null;
         } catch (Exception e) { // 捕获所有其他异常
-            addError(-10, ERROR_CODE_CRITICAL,"Failed to register block(isRegisterItem: '{}'): '{}' , Class(.class): {} , Error: '{}'",
-                    registerItem, path, blockClass.getName(), e.getMessage());
+            if (addError(-10, ERROR_CODE_CRITICAL,"Failed to register block(isRegisterItem: '{}'): '{}' , Class(.class): {} , Error: '{}'",
+                    registerItem, path, blockClass.getName(), e.getMessage())) {
+                return registerBlock(path, blockClass, false);
+            }
             return null;
         }
     }
@@ -134,15 +142,27 @@ public class ModBlock {
 
             return block;
         } catch (ReflectiveOperationException | IllegalArgumentException e) { // 捕获所有反射异常
-            addError(-10, ERROR_CODE_CRITICAL,"Failed to register block: '{}' , Class(.class): {} , Error: '{}'",
-                    blockClass.getName(), e.getMessage());
-            return null;
+            if (addError(-10, ERROR_CODE_CRITICAL,"Failed to register block: '{}' , Class(.class): {} , Error: '{}'",path, blockClass.getName(), e.getMessage())) {
+                return registerBlock(path, blockClass, false);
+            } else {
+                return null;
+            }
         } catch (Exception e) { // 捕获所有其他异常
-            addError(-10, ERROR_CODE_CRITICAL,"Failed to register block: '{}' , Class(.class): {} , Error: '{}'",path, blockClass.getName(), e.getMessage());
-            return null;
+            if (addError(-10, ERROR_CODE_CRITICAL,"Failed to register block: '{}' , Class(.class): {} , Error: '{}'",path, blockClass.getName(), e.getMessage())) {
+                return registerBlock(path, blockClass, false);
+            } else {
+                return null;
+            }
         }
     }
 
+    /**
+     * 注册方块，同时注册物品
+     * @param path 方块ID
+     * @param block 方块实例
+     * @param BlockItemToItemGroup 物品所属的物品组
+     * @return {@link Block} | {@code null} 注册的方块实例
+     */
     public static Block registerBlock(String path, Block block, String BlockItemToItemGroup) {
         CONSOLE.debug("Trying to register the Block now: '{}' , Class: {} , ItemGroup: {}", path, block.getClass().getName(), BlockItemToItemGroup);
         try {
@@ -150,8 +170,11 @@ public class ModBlock {
             registerBlockItem(path, BlockItemToItemGroup);
             return block;
         } catch (Exception e) { // 捕获所有其他异常
-            addError(-10, ERROR_CODE_CRITICAL,"Failed to register block: '{}' , Class(.class): {} , Error: '{}'",path, block.getClass().getName(), e.getMessage());
-            return null;
+            if (addError(-10, ERROR_CODE_FATAL,"Failed to register block: '{}' , Class(.class): {} , Error: '{}'",path, block.getClass().getName(), e.getMessage())) {
+                return registerBlock(path, block, false);
+            } else {
+                return null;
+            }
         }
     }
 
@@ -172,7 +195,7 @@ public class ModBlock {
         CONSOLE.info("正在注册方块...");
         _var.initialize();
         CONSOLE.debug("注册方块完成。");
-//        final Block  FIRE_DOOR_B_BLOCK_OBJECT               = registerBlock(FIRE_DOOR_B_BLOCK_ID                      , new DoorBlock                          (AbstractBlock.Settings.copy(EXAMPLE_BLOCK_OBJECT), BlockSetType.STONE)          , MAIN_GROUP);
+//        final Block FIRE_DOOR_B_BLOCK_OBJECT = registerBlock(FIRE_DOOR_B_BLOCK_ID, new DoorBlock(AbstractBlock.Settings.copy(EXAMPLE_BLOCK_OBJECT), BlockSetType.STONE), MAIN_GROUP);
 
     }
 
@@ -200,24 +223,4 @@ public class ModBlock {
         Registry.register(Registries.BLOCK, Identifier.of("tutorial", "example_block"), EXAMPLE_BLOCK);
     */
     // 下面是带碰撞箱的方块
-
-    public static String[] allBlockComponents = {
-            "warning_sign_a",
-            "warning_sign_b",
-            "warning_sign_c",
-            "warning_sign_d",
-            "warning_sign_e",
-            "warning_sign_f",
-            "warning_sign_g",
-            "warning_sign_h",
-            "warning_sign_i",
-
-    };
-    // 这里是不带碰撞箱的方块
-    public static String[] allBlockComponentsNoCrashBox = {
-            "railroad_car_stopper_a",
-            "railroad_car_stopper_b",
-            "guardrails_a",
-
-    };
 }

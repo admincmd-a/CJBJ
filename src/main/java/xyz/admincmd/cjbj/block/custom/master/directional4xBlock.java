@@ -22,11 +22,6 @@ public class directional4xBlock extends HorizontalFacingBlock {
         super(settings);
     }
 
-//    @Override
-//    protected MapCodec<? extends VerticalSlabBlock> getCodec() {
-//        return CODEC;
-//    }
-
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(Properties.HORIZONTAL_FACING);

@@ -5,6 +5,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockSetType;
 import net.minecraft.block.DoorBlock;
 import xyz.admincmd.cjbj.block.custom.*;
+import xyz.admincmd.cjbj.block.custom.master.directional16xBlock;
 
 import static net.minecraft.block.Blocks.OAK_DOOR;
 import static net.minecraft.block.Blocks.OAK_PLANKS;
@@ -24,16 +25,19 @@ public class _var {
     public static final String WARNING_SIGN_H_BLOCK_ID                = "warning_sign_h";
     public static final String WARNING_SIGN_I_BLOCK_ID                = "warning_sign_i";
     public static final String WARNING_SIGN_J_BLOCK_ID                = "warning_sign_j";
-//  public static final String WARNING_SIGN_K_BLOCK_ID                = "warning_sign_k";
-    public static final String CABLE_TRAY_BLOCK_ID                    = "cable_tray";         //
-    public static final String CABLE_TRAY_C01A_BLOCK_ID               = "cable_tray_c01a";    // 槽式直通
-    public static final String CABLE_TRAY_C02A_BLOCK_ID               = "cable_tray_c02a";    // 水平弯通
-    public static final String CABLE_TRAY_C03A_BLOCK_ID               = "cable_tray_c03a";    // 水平三通
-    public static final String CABLE_TRAY_C05A_BLOCK_ID               = "cable_tray_c05a";    // 垂直下弯通
-    public static final String CABLE_TRAY_C05B_BLOCK_ID               = "cable_tray_c05b";    // 垂直上弯通
-    public static final String CABLE_TRAY_C03D_BLOCK_ID               = "cable_tray_c03d";    // 垂直右上弯通
-    public static final String CABLE_TRAY_C03E_BLOCK_ID               = "cable_tray_c03e";    // 下边垂直三通
-    public static final String CABLE_TRAY_C03F_BLOCK_ID               = "cable_tray_c03f";    // 上角垂直三通
+    public static final String ROAD_BAR                               = "road_bar";
+    public static final String CONSTRUCTION_RIGHT_GUIDED              = "construction_right_guided";
+    public static final String CONSTRUCTION_RIGHT_GUIDED_2            = "construction_right_guided_";
+//  public static final String WARNING_SIGN_K_BLOCK_ID                = "warning_sign_k";construction_right_guided_
+//    public static final String CABLE_TRAY_BLOCK_ID                    = "cable_tray";         //
+//    public static final String CABLE_TRAY_C01A_BLOCK_ID               = "cable_tray_c01a";    // 槽式直通
+//    public static final String CABLE_TRAY_C02A_BLOCK_ID               = "cable_tray_c02a";    // 水平弯通
+//    public static final String CABLE_TRAY_C03A_BLOCK_ID               = "cable_tray_c03a";    // 水平三通
+//    public static final String CABLE_TRAY_C05A_BLOCK_ID               = "cable_tray_c05a";    // 垂直下弯通
+//    public static final String CABLE_TRAY_C05B_BLOCK_ID               = "cable_tray_c05b";    // 垂直上弯通
+//    public static final String CABLE_TRAY_C03D_BLOCK_ID               = "cable_tray_c03d";    // 垂直右上弯通
+//    public static final String CABLE_TRAY_C03E_BLOCK_ID               = "cable_tray_c03e";    // 下边垂直三通
+//    public static final String CABLE_TRAY_C03F_BLOCK_ID               = "cable_tray_c03f";    // 上角垂直三通
     public static final String RAILROAD_CAR_STOPPER_A_BLOCK_ID        = "railroad_car_stopper_a";
     public static final String RAILROAD_CAR_STOPPER_B_BLOCK_ID        = "railroad_car_stopper_b";
     public static final String RAILROAD_CAR_STOPPER_C_BLOCK_ID        = "railroad_car_stopper_c";
@@ -56,17 +60,20 @@ public class _var {
     public static final Block  WARNING_SIGN_H_BLOCK_OBJECT            = registerBlock(WARNING_SIGN_H_BLOCK_ID                   , new Block                              (AbstractBlock.Settings.copy(EXAMPLE_BLOCK_OBJECT))                              , MAIN_GROUP);
     public static final Block  WARNING_SIGN_I_BLOCK_OBJECT            = registerBlock(WARNING_SIGN_I_BLOCK_ID                   , new Block                              (AbstractBlock.Settings.copy(EXAMPLE_BLOCK_OBJECT))                              , MAIN_GROUP);
     public static final Block  WARNING_SIGN_J_BLOCK_OBJECT            = registerBlock(WARNING_SIGN_J_BLOCK_ID                   , new Block                              (AbstractBlock.Settings.copy(EXAMPLE_BLOCK_OBJECT))                              , MAIN_GROUP);
-//  public static final Block  WARNING_SIGN_K_BLOCK_OBJECT            = registerBlock(WARNING_SIGN_K_BLOCK_ID                   , new Block                              (AbstractBlock.Settings.copy(EXAMPLE_BLOCK_OBJECT))                              , MAIN_GROUP;
+    public static final Block  ROAD_BAR_OBJECT                        = registerBlock(ROAD_BAR                                  , new directional16xBlock                (AbstractBlock.Settings.copy(EXAMPLE_BLOCK_OBJECT))                              , MAIN_GROUP);
+    public static final Block  CONSTRUCTION_RIGHT_GUIDED_OBJECT       = registerBlock(CONSTRUCTION_RIGHT_GUIDED                 , new directional16xBlock                (AbstractBlock.Settings.copy(EXAMPLE_BLOCK_OBJECT))                              , MAIN_GROUP);
+    public static final Block  CONSTRUCTION_RIGHT_GUIDED_2_OBJECT     = registerBlock(CONSTRUCTION_RIGHT_GUIDED_2               , new directional16xBlock                (AbstractBlock.Settings.copy(EXAMPLE_BLOCK_OBJECT))                              , MAIN_GROUP);
+    //  public static final Block  WARNING_SIGN_K_BLOCK_OBJECT            = registerBlock(WARNING_SIGN_K_BLOCK_ID                   , new Block                              (AbstractBlock.Settings.copy(EXAMPLE_BLOCK_OBJECT))                              , MAIN_GROUP;
 /* --- 1 一些带有简单方向性、功能的方块 ---------------------------------------------------------------------------------------------------------new -----------------------------------(AbstractBlock.Settings.copy(EXAMPLE_BLOCK_OBJECT)                               , MAIN_GROUP*/
-    public static final Block  CABLE_TRAY_BLOCK_OBJECT                = registerBlock(CABLE_TRAY_BLOCK_ID                       , new Block                              (AbstractBlock.Settings.copy(EXAMPLE_BLOCK_OBJECT))                              , MAIN_GROUP);
-    public static final Block  CABLE_TRAY_C01A_BLOCK_OBJECT           = registerBlock(CABLE_TRAY_C01A_BLOCK_ID                  , new Block                              (AbstractBlock.Settings.copy(EXAMPLE_BLOCK_OBJECT))                              , MAIN_GROUP);
-    public static final Block  CABLE_TRAY_C02A_BLOCK_OBJECT           = registerBlock(CABLE_TRAY_C02A_BLOCK_ID                  , new Block                              (AbstractBlock.Settings.copy(EXAMPLE_BLOCK_OBJECT))                              , MAIN_GROUP);
-    public static final Block  CABLE_TRAY_C03A_BLOCK_OBJECT           = registerBlock(CABLE_TRAY_C03A_BLOCK_ID                  , new Block                              (AbstractBlock.Settings.copy(EXAMPLE_BLOCK_OBJECT))                              , MAIN_GROUP);
-    public static final Block  CABLE_TRAY_C05A_BLOCK_OBJECT           = registerBlock(CABLE_TRAY_C05A_BLOCK_ID                  , new Block                              (AbstractBlock.Settings.copy(EXAMPLE_BLOCK_OBJECT))                              , MAIN_GROUP);
-    public static final Block  CABLE_TRAY_C05B_BLOCK_OBJECT           = registerBlock(CABLE_TRAY_C05B_BLOCK_ID                  , new Block                              (AbstractBlock.Settings.copy(EXAMPLE_BLOCK_OBJECT))                              , MAIN_GROUP);
-    public static final Block  CABLE_TRAY_C03D_BLOCK_OBJECT           = registerBlock(CABLE_TRAY_C03D_BLOCK_ID                  , new Block                              (AbstractBlock.Settings.copy(EXAMPLE_BLOCK_OBJECT))                              , MAIN_GROUP);
-    public static final Block  CABLE_TRAY_C03E_BLOCK_OBJECT           = registerBlock(CABLE_TRAY_C03E_BLOCK_ID                  , new Block                              (AbstractBlock.Settings.copy(EXAMPLE_BLOCK_OBJECT))                              , MAIN_GROUP);
-    public static final Block  CABLE_TRAY_C03F_BLOCK_OBJECT           = registerBlock(CABLE_TRAY_C03F_BLOCK_ID                  , new Block                              (AbstractBlock.Settings.copy(EXAMPLE_BLOCK_OBJECT))                              , MAIN_GROUP);
+//    public static final Block  CABLE_TRAY_BLOCK_OBJECT                = registerBlock(CABLE_TRAY_BLOCK_ID                       , new Block                              (AbstractBlock.Settings.copy(EXAMPLE_BLOCK_OBJECT))                              , MAIN_GROUP);
+//    public static final Block  CABLE_TRAY_C01A_BLOCK_OBJECT           = registerBlock(CABLE_TRAY_C01A_BLOCK_ID                  , new Block                              (AbstractBlock.Settings.copy(EXAMPLE_BLOCK_OBJECT))                              , MAIN_GROUP);
+//    public static final Block  CABLE_TRAY_C02A_BLOCK_OBJECT           = registerBlock(CABLE_TRAY_C02A_BLOCK_ID                  , new Block                              (AbstractBlock.Settings.copy(EXAMPLE_BLOCK_OBJECT))                              , MAIN_GROUP);
+//    public static final Block  CABLE_TRAY_C03A_BLOCK_OBJECT           = registerBlock(CABLE_TRAY_C03A_BLOCK_ID                  , new Block                              (AbstractBlock.Settings.copy(EXAMPLE_BLOCK_OBJECT))                              , MAIN_GROUP);
+//    public static final Block  CABLE_TRAY_C05A_BLOCK_OBJECT           = registerBlock(CABLE_TRAY_C05A_BLOCK_ID                  , new Block                              (AbstractBlock.Settings.copy(EXAMPLE_BLOCK_OBJECT))                              , MAIN_GROUP);
+//    public static final Block  CABLE_TRAY_C05B_BLOCK_OBJECT           = registerBlock(CABLE_TRAY_C05B_BLOCK_ID                  , new Block                              (AbstractBlock.Settings.copy(EXAMPLE_BLOCK_OBJECT))                              , MAIN_GROUP);
+//    public static final Block  CABLE_TRAY_C03D_BLOCK_OBJECT           = registerBlock(CABLE_TRAY_C03D_BLOCK_ID                  , new Block                              (AbstractBlock.Settings.copy(EXAMPLE_BLOCK_OBJECT))                              , MAIN_GROUP);
+//    public static final Block  CABLE_TRAY_C03E_BLOCK_OBJECT           = registerBlock(CABLE_TRAY_C03E_BLOCK_ID                  , new Block                              (AbstractBlock.Settings.copy(EXAMPLE_BLOCK_OBJECT))                              , MAIN_GROUP);
+//    public static final Block  CABLE_TRAY_C03F_BLOCK_OBJECT           = registerBlock(CABLE_TRAY_C03F_BLOCK_ID                  , new Block                              (AbstractBlock.Settings.copy(EXAMPLE_BLOCK_OBJECT))                              , MAIN_GROUP);
     public static final Block  RAILROAD_CAR_STOPPER_A_BLOCK_OBJECT    = registerBlock(RAILROAD_CAR_STOPPER_A_BLOCK_ID           , new railroad_car_stopper_a             (AbstractBlock.Settings.copy(EXAMPLE_BLOCK_OBJECT))                              , MAIN_GROUP);
     public static final Block  RAILROAD_CAR_STOPPER_B_BLOCK_OBJECT    = registerBlock(RAILROAD_CAR_STOPPER_B_BLOCK_ID           , new railroad_car_stopper_b             (AbstractBlock.Settings.copy(EXAMPLE_BLOCK_OBJECT))                              , MAIN_GROUP);
     public static final Block  RAILROAD_CAR_STOPPER_C_BLOCK_OBJECT    = registerBlock(RAILROAD_CAR_STOPPER_C_BLOCK_ID           , new railroad_car_stopper_c             (AbstractBlock.Settings.copy(EXAMPLE_BLOCK_OBJECT))                              , MAIN_GROUP);

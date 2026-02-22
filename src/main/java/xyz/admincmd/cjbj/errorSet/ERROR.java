@@ -11,22 +11,15 @@ public class ERROR {
     private final int LEVEL;
     private final int EXIT_CODE;
     private final Date TIME;
+    private final Class<?> CLASS;
 
-    /**
-     * 内部错误
-     */
+    /* 内部错误 */
     public static final int ERROR_CODE_UNKNOWN = 0; // 内部错误
-    /**
-     * 警告
-     */
+    /* 警告 */
     public static final int ERROR_CODE_WARN = 1;
-    /**
-     * 致命错误
-     */
+    /* 致命错误 */
     public static final int ERROR_CODE_FATAL = 2;
-    /**
-     * 灾难性错误
-     */
+    /* 灾难性错误*/
     public static final int ERROR_CODE_CRITICAL = 3;
 
     /**
@@ -36,10 +29,11 @@ public class ERROR {
      * @param errorLevel 错误等级
      * @param exitCode 退出代码
      */
-    public ERROR(String errorMessage, int errorCode, int errorLevel, int exitCode) {
+    public ERROR(String errorMessage, int errorCode,Class<?> errorCLASS , int errorLevel, int exitCode) {
         MESSAGE = errorMessage;
         CODE = errorCode;
         LEVEL = errorLevel;
+        CLASS = errorCLASS;
         EXIT_CODE = exitCode;
         TIME = new Date();
     }
@@ -54,6 +48,7 @@ public class ERROR {
         MESSAGE = errorMessage;
         CODE = errorCode;
         LEVEL = errorLevel;
+        CLASS = null;
         EXIT_CODE = -225;
         TIME = new Date();
     }
@@ -71,6 +66,16 @@ public class ERROR {
         return LEVEL;
     }
 
+    public String getLEVELtoString(int LEVEL) {
+        return switch (LEVEL) {
+            case 0 -> "UNKNOWN";
+            case 1 -> "WARN";
+            case 2 -> "FATAL";
+            case 3 -> "CRITICAL";
+            default -> LEVEL + "";
+        };
+    }
+
     public Date getTIME() {
         return TIME;
     }
@@ -79,7 +84,9 @@ public class ERROR {
         return EXIT_CODE;
     }
 
+    public Class<?> getCLASS() {return CLASS;}
+
     public String toString() {
-        return "ERROR: " + MESSAGE + " (CODE: " + CODE + ", LEVEL: " + LEVEL + ", EXIT_CODE: " + EXIT_CODE + ", TIME: '" + TIME + "')";
+        return TIME +" ["+CLASS+"]"+getLEVELtoString(LEVEL)+"("+CODE+"/"+EXIT_CODE+"): "+MESSAGE;
     }
 }

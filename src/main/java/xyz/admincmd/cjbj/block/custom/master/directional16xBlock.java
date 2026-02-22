@@ -22,6 +22,9 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import xyz.admincmd.cjbj.errorSet.ERROR;
+import xyz.admincmd.cjbj.errorSet.errorSet;
+import xyz.admincmd.cjbj.item.ModItem;
 
 import java.util.Objects;
 
@@ -69,43 +72,44 @@ public class directional16xBlock extends HorizontalFacingBlock {
 
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return super.getPlacementState(ctx).with(Properties.HORIZONTAL_FACING, ctx.getHorizontalPlayerFacing().getOpposite());
+        return Objects.requireNonNull(super.getPlacementState(ctx)).with(Properties.HORIZONTAL_FACING, ctx.getHorizontalPlayerFacing().getOpposite());
     }
 
     @Override
     // 对于 1.20.5 以下版本，方法参数应该是“BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit”
     // BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (!player.getAbilities().allowModifyWorld) {
-            // Skip if the player isn't allowed to modify the world.
-            return ActionResult.PASS;
-        } else {
-            // Get the current value of the "activated" property
+        try {
+            if (!player.getAbilities().allowModifyWorld) {
+                // Skip if the player isn't allowed to modify the world.
+                return ActionResult.PASS;
+            } else {
+                // Get the current value of the "activated" property
 //            boolean activated = state.get(ANGLE_TYPE, 0);
 
 
-            // 判断是否为工具类物品
-            boolean ItemModeIsConfig = false;
-            for (Item ItemNameMods : CONFIG_TOOL_MODE) {
-                if (Objects.equals(ItemNameMods, player.getMainHandStack().getItem())) {
-                    ItemModeIsConfig = true;
-                    break;
-                }
-            }
-
-            if (ItemModeIsConfig) {
-                switch (state.get(ANGLE_TYPE)) { // 切换不同角度
-                    case 0 -> world.setBlockState(pos, state.with(ANGLE_TYPE, 1));
-                    case 1 -> world.setBlockState(pos, state.with(ANGLE_TYPE, 2));
-                    case 2 -> world.setBlockState(pos, state.with(ANGLE_TYPE, 0));
-                    default -> {
-                        CONSOLE.error("Invalid angle type: {}", state.get(ANGLE_TYPE)); // 抛出错误信息
-                        return ActionResult.PASS; // 不执行任何操作
+                // 判断是否为工具类物品
+                if (ModItem.isConfigTool(player, true)) {
+                    switch (state.get(ANGLE_TYPE)) { // 切换不同角度
+                        case 0 -> world.setBlockState(pos, state.with(ANGLE_TYPE, 1));
+                        case 1 -> world.setBlockState(pos, state.with(ANGLE_TYPE, 2));
+                        case 2 -> world.setBlockState(pos, state.with(ANGLE_TYPE, 0));
+                        default -> {
+                            errorSet.addError(
+                                    0x000016,
+                                    ERROR.ERROR_CODE_WARN,
+                                    "Invalid angle type {}",
+                                    state.get(ANGLE_TYPE)
+                            );
+                        }
                     }
+                    world.playSound(player, pos, SoundEvents.BLOCK_COMPARATOR_CLICK, SoundCategory.BLOCKS, 1.0F, 1.0F);
                 }
-                world.playSound(player, pos, SoundEvents.BLOCK_COMPARATOR_CLICK, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                return ActionResult.SUCCESS;
             }
-            return ActionResult.SUCCESS;
+        } catch (Exception e) {
+            errorSet.addError(e.getMessage(), 0x000016, ERROR.ERROR_CODE_WARN);
+            return ActionResult.PASS;
         }
     }
 }
